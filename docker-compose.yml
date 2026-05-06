@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: task_manager_db
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-task_manager}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: task_manager_app
+    restart: unless-stopped
+    ports:
+      - '3333:3333'
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@postgres:5432/${DB_NAME:-task_manager}
+      JWT_SECRET: ${JWT_SECRET:-supersecretkey}
+      JWT_EXPIRES_IN: 1d
+      PORT: 3333
+      NODE_ENV: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
