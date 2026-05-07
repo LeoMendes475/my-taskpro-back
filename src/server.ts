@@ -1,9 +1,15 @@
-import 'dotenv/config';
-import { app } from './app';
+import 'dotenv/config'
+import { app } from './app'
+import { logger } from './shared/observability/logger'
 
-const PORT = process.env.PORT ?? 3333;
+const PORT = process.env.PORT ?? 3333
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📋 Environment: ${process.env.NODE_ENV ?? 'development'}`);
-});
+  logger.info(`Server started`, {
+    port: PORT,
+    env: process.env.NODE_ENV ?? 'development',
+    docs: `http://localhost:${PORT}/docs`,
+    metrics: `http://localhost:${PORT}/metrics`,
+    health: `http://localhost:${PORT}/health`,
+  })
+})
