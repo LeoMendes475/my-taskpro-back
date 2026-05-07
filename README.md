@@ -2,7 +2,7 @@
 
 API REST para gerenciamento de tarefas com autenticação JWT, construída com Node.js, TypeScript, Prisma e PostgreSQL.
 
-![CI](https://github.com/<seu-usuario>/mytask-pro/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/LeoMendes475/my-taskpro-back/actions/workflows/ci.yml/badge.svg)
 
 ---
 
