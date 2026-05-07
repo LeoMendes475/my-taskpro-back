@@ -1,10 +1,11 @@
-import { CreateTaskDTO, UpdateTaskDTO } from '../dtos/taskDTOs';
+import { CreateTaskDTO, UpdateTaskDTO } from "../dtos/taskDTOs";
 
 export interface TaskEntity {
   id: string;
   title: string;
   category: string;
   completed: boolean;
+  durationMinutes: number | null;
   userId: string;
   createdAt: Date;
   updatedAt: Date;

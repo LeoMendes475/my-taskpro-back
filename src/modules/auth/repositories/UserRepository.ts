@@ -1,7 +1,7 @@
-import prisma from '../../../shared/container/prisma';
-import { RegisterDTO } from '../dtos/authDTOs';
-import { IUserRepository, UserEntity } from './IUserRepository';
-import { hash } from 'bcryptjs';
+import prisma from "../../../shared/container/prisma";
+import { RegisterDTO } from "../dtos/authDTOs";
+import { IUserRepository, UserEntity } from "./IUserRepository";
+import { hash } from "bcryptjs";
 
 export class UserRepository implements IUserRepository {
   async findByEmail(email: string): Promise<UserEntity | null> {

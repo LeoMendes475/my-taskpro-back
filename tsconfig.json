@@ -16,7 +16,8 @@
     "paths": {
       "@modules/*": ["./src/modules/*"],
       "@shared/*": ["./src/shared/*"]
-    }
+    },
+    "types": ["jest", "node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

@@ -1,6 +1,6 @@
-import prisma from '../../../shared/container/prisma';
-import { CreateTaskDTO, UpdateTaskDTO } from '../dtos/taskDTOs';
-import { ITaskRepository, TaskEntity } from './ITaskRepository';
+import prisma from "../../../shared/container/prisma";
+import { CreateTaskDTO, UpdateTaskDTO } from "../dtos/taskDTOs";
+import { ITaskRepository, TaskEntity } from "./ITaskRepository";
 
 export class TaskRepository implements ITaskRepository {
   async create(data: CreateTaskDTO & { userId: string }): Promise<TaskEntity> {
@@ -10,7 +10,7 @@ export class TaskRepository implements ITaskRepository {
   async findAllByUser(userId: string): Promise<TaskEntity[]> {
     return prisma.task.findMany({
       where: { userId },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
     });
   }
 

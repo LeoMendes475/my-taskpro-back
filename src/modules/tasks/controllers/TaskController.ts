@@ -1,12 +1,12 @@
-import { Request, Response } from 'express';
-import { createTaskSchema, taskIdSchema, updateTaskSchema } from '../dtos/taskDTOs';
-import { TaskRepository } from '../repositories/TaskRepository';
+import { Request, Response } from "express";
+import { createTaskSchema, taskIdSchema, updateTaskSchema } from "../dtos/taskDTOs";
+import { TaskRepository } from "../repositories/TaskRepository";
 import {
   CreateTaskUseCase,
   DeleteTaskUseCase,
   ListTasksUseCase,
   UpdateTaskUseCase,
-} from '../use-cases/taskUseCases';
+} from "../use-cases/taskUseCases";
 
 export class TaskController {
   async create(req: Request, res: Response): Promise<Response> {

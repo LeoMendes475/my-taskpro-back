@@ -1,4 +1,4 @@
-import { RegisterDTO } from '../dtos/authDTOs';
+import { RegisterDTO } from "../dtos/authDTOs";
 
 export interface IUserRepository {
   findByEmail(email: string): Promise<UserEntity | null>;

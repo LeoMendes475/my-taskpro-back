@@ -1,12 +1,11 @@
-import { Request, Response } from 'express';
-import { loginSchema, registerSchema } from '../dtos/authDTOs';
-import { UserRepository } from '../repositories/UserRepository';
-import { LoginUseCase } from '../use-cases/LoginUseCase';
-import { RegisterUseCase } from '../use-cases/RegisterUseCase';
+import { Request, Response } from "express";
+import { loginSchema, registerSchema } from "../dtos/authDTOs";
+import { UserRepository } from "../repositories/UserRepository";
+import { LoginUseCase } from "../use-cases/LoginUseCase";
+import { RegisterUseCase } from "../use-cases/RegisterUseCase";
 
 export class AuthController {
   async register(req: Request, res: Response): Promise<Response> {
-    console.log("here")
     const body = registerSchema.parse(req.body);
 
     const userRepository = new UserRepository();
@@ -15,7 +14,7 @@ export class AuthController {
     const user = await registerUseCase.execute(body);
 
     return res.status(201).json({
-      message: 'Usuário criado com sucesso',
+      message: "Usuário criado com sucesso",
       user,
     });
   }
