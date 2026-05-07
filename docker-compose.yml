@@ -31,6 +31,7 @@ services:
       JWT_EXPIRES_IN: 1d
       PORT: 3333
       NODE_ENV: development
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
     depends_on:
       postgres:
         condition: service_healthy

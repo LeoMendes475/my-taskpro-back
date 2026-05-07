@@ -6,6 +6,7 @@ import { RegisterUseCase } from '../use-cases/RegisterUseCase';
 
 export class AuthController {
   async register(req: Request, res: Response): Promise<Response> {
+    console.log("here")
     const body = registerSchema.parse(req.body);
 
     const userRepository = new UserRepository();

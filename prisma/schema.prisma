@@ -21,13 +21,14 @@ model User {
 }
 
 model Task {
-  id          String     @id @default(uuid())
-  title       String
-  category    String
-  completed   Boolean    @default(false)
-  userId      String     @map("user_id")
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
+  id              String   @id @default(uuid())
+  title           String
+  category        String
+  completed       Boolean  @default(false)
+  durationMinutes Int?     @map("duration_minutes")
+  userId          String   @map("user_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
